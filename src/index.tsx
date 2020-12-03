@@ -1,15 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+import reportWebVitals from "./reportWebVitals";
+import setupProject from "./project-setup";
+import App from "./App";
+import "./index.css";
+
+// Renders the web-app/extension content.
+setupProject({
+  rootElement: (
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  ),
+  injectExtensionTo: "body",
+});
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
