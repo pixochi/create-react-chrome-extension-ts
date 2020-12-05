@@ -5,7 +5,7 @@ import setupProject from "./project-setup";
 import App from "./App";
 import "./index.css";
 
-// Renders the web-app/extension content.
+// Renders the web-app/extension content to DOM.
 setupProject({
   rootElement: (
     <React.StrictMode>
@@ -13,6 +13,7 @@ setupProject({
     </React.StrictMode>
   ),
   injectExtensionTo: "body",
+  injectWebAppTo: "#root",
 });
 
 // If you want to start measuring performance in your app, pass a function

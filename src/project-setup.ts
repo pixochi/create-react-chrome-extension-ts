@@ -2,53 +2,54 @@ import ReactDOM, { Renderer } from "react-dom";
 
 import { checkIsExtension } from "./services/environment-service";
 
-const APP_ROOT_ELEMENT_ID = "root";
-
 type RootElement = Parameters<Renderer>["0"][0];
 type Selector = string;
 
 interface AppSetupConfig {
-  injectExtensionTo: Selector;
   rootElement: RootElement;
+  injectExtensionTo: Selector;
+  injectWebAppTo: Selector;
 }
 
 const findElementInDOM = (selector: Selector) => {
   return document.querySelector(selector);
 };
 
-const renderAppToDOM = (element: RootElement) => {
-  ReactDOM.render(element, document.getElementById(APP_ROOT_ELEMENT_ID));
+const renderAppToDOM = (element: RootElement, selector: Selector) => {
+  ReactDOM.render(element, document.querySelector(selector));
 };
 
-const injectExtensionToDOM = (config: AppSetupConfig) => {
-  const appContainer = document.createElement("div");
-  appContainer.id = APP_ROOT_ELEMENT_ID;
+const injectExtensionToDOM = (element: RootElement, selector: Selector) => {
+  const rootElementId = "root";
 
-  const elementInDOM = findElementInDOM(config.injectExtensionTo);
+  const appContainer = document.createElement("div");
+  appContainer.id = rootElementId;
+
+  const elementInDOM = findElementInDOM(selector);
 
   if (elementInDOM) {
     elementInDOM.append(appContainer);
-    renderAppToDOM(config.rootElement);
+    renderAppToDOM(element, `#${rootElementId}`);
   }
 };
 
-const initExtension = (config: AppSetupConfig) => {
+const initExtension = (element: RootElement, selector: Selector) => {
   const interval = setInterval(() => {
     // Can't inject the extension to DOM.
-    if (!findElementInDOM(config.injectExtensionTo)) {
+    if (!findElementInDOM(selector)) {
       return;
     }
 
     clearInterval(interval);
-    injectExtensionToDOM(config);
+    injectExtensionToDOM(element, selector);
   }, 100);
 }; // check every 100ms
 
 const setupProject = (config: AppSetupConfig) => {
   if (checkIsExtension()) {
-    initExtension(config);
+    initExtension(config.rootElement, config.injectExtensionTo);
   } else {
-    renderAppToDOM(config.rootElement);
+    renderAppToDOM(config.rootElement, config.injectWebAppTo);
   }
 };
 
