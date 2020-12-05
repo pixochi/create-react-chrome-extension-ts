@@ -3,23 +3,26 @@ import ReactDOM, { Renderer } from "react-dom";
 import { checkIsExtension } from "./services/environment-service";
 
 type RootElement = Parameters<Renderer>["0"][0];
-type Selector = string;
+type ContainerSelector = string;
 
 interface AppSetupConfig {
   rootElement: RootElement;
-  injectExtensionTo: Selector;
-  injectWebAppTo: Selector;
+  injectExtensionTo: ContainerSelector;
+  injectWebAppTo: ContainerSelector;
 }
 
-const findElementInDOM = (selector: Selector) => {
+const findElementInDOM = (selector: ContainerSelector) => {
   return document.querySelector(selector);
 };
 
-const renderAppToDOM = (element: RootElement, selector: Selector) => {
+const renderAppToDOM = (element: RootElement, selector: ContainerSelector) => {
   ReactDOM.render(element, document.querySelector(selector));
 };
 
-const injectExtensionToDOM = (element: RootElement, selector: Selector) => {
+const injectExtensionToDOM = (
+  element: RootElement,
+  selector: ContainerSelector
+) => {
   const rootElementId = "root";
 
   const appContainer = document.createElement("div");
@@ -33,7 +36,7 @@ const injectExtensionToDOM = (element: RootElement, selector: Selector) => {
   }
 };
 
-const initExtension = (element: RootElement, selector: Selector) => {
+const initExtension = (element: RootElement, selector: ContainerSelector) => {
   const interval = setInterval(() => {
     // Can't inject the extension to DOM.
     if (!findElementInDOM(selector)) {
