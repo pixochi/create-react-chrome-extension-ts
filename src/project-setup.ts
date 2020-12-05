@@ -56,4 +56,4 @@ const setupProject = (config: AppSetupConfig) => {
   }
 };
 
-export default setupProject;
+export { setupProject };

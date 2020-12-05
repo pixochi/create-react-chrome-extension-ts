@@ -1,7 +1,7 @@
 import React from "react";
 
 import reportWebVitals from "./reportWebVitals";
-import setupProject from "./project-setup";
+import { setupProject } from "./project-setup";
 import App from "./App";
 import "./index.css";
 
