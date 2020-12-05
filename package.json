@@ -22,8 +22,7 @@
     "start": "react-app-rewired start",
     "build:extension": "REACT_APP_BUILD_TARGET=extension react-app-rewired build",
     "build:app": "REACT_APP_BUILD_TARGET=web-app react-app-rewired build",
-    "test": "react-app-rewired test",
-    "eject": "react-scripts eject"
+    "test": "react-app-rewired test"
   },
   "eslintConfig": {
     "extends": [
