@@ -1,10 +1,54 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const FileManagerPlugin = require("filemanager-webpack-plugin");
+
+// Adds a manifest file to the build according to the current context,
+// and deletes files from the build that are not needed in the current context
+const getFileManagerPlugin = () => {
+  const isExtensionBuild = process.env.REACT_APP_BUILD_TARGET === "extension";
+  const webAppBuildFiles = [
+    "index.html",
+    "favicon.ico",
+    "logo192.png",
+    "logo512.png",
+    "robots.txt",
+    "asset-manifest.json",
+  ];
+  const extensionBuildFiles = ["icon16.png", "icon48.png", "icon128.png"];
+
+  const manifestFiles = {
+    webApp: "build/web-app-manifest.json",
+    extension: "build/extension-manifest.json",
+  };
+
+  return new FileManagerPlugin({
+    events: {
+      onEnd: {
+        copy: [
+          {
+            source: isExtensionBuild
+              ? manifestFiles.extension
+              : manifestFiles.webApp,
+            destination: "build/manifest.json",
+          },
+        ],
+        delete: Object.values(manifestFiles).concat(
+          (isExtensionBuild ? webAppBuildFiles : extensionBuildFiles).map(
+            (filename) => `build/${filename}`
+          )
+        ),
+      },
+    },
+  });
+};
 
 module.exports = {
   webpack: function (config) {
+    const isExtensionBuild = process.env.REACT_APP_BUILD_TARGET === "extension";
+
     // The default webpack configuration from `Create React App` can be used
-    // if the app is not built as a chrome extension with `npm run build:extension`.
-    if (process.env.REACT_APP_BUILD_TARGET !== "extension") {
+    // if the app is not built as a chrome extension with the `build:extension` script.
+    if (!isExtensionBuild) {
+      config.plugins = config.plugins.concat(getFileManagerPlugin());
       return config;
     }
     // The webpack configuration will be updated
@@ -35,7 +79,8 @@ module.exports = {
         .concat(
           // `MiniCssExtractPlugin` is used with its default config instead,
           // which doesn't contain `[contenthash]`.
-          new MiniCssExtractPlugin()
+          new MiniCssExtractPlugin(),
+          getFileManagerPlugin()
         );
 
       return config;
