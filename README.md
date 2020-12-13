@@ -56,7 +56,7 @@ You will also see any lint errors in the console.
 **Builds the extension** for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and your extension is ready to be used in Developer mode or published to the Google Web Store!.\
+The build is minified and your extension is ready to be used in Developer mode or published to the Google Web Store!.
 
 #### Open the extension in Developer mode
 
