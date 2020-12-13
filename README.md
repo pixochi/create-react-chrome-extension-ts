@@ -1,4 +1,4 @@
-# Getting Started with Create React Chrome Extension - TS
+# Create React Chrome Extension - TS
 
 A lightweight boilerplate for building a **Chrome extension** and a standard **React web app** with React, TypeScript and Webpack **at the same time**.
 
