@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Create React Chrome Extension - TypeScript",
   "version": "0.1.0",
-  "description": "A lightweight boilerplate for building chrome extensions with React, TypeScript and Webpack.",
+  "description": "A lightweight boilerplate for building a Chrome extension with React, TypeScript and Webpack.",
   "author": "Jakub Pixochi Kozak",
   "icons": {
     "16": "icon16.png",
