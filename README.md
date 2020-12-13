@@ -4,6 +4,8 @@ A lightweight boilerplate for building a **Chrome extension** and a standard **R
 
 ## How to use the boilerplate
 
+If you already know React, you can start coding your Chrome extension straight away with no build configuration.
+
 ### Setup options
 
 You can change the options used in the `setupProject` function in  [src/index.tsx](https://github.com/pixochi/create-react-chrome-extension-ts/blob/main/src/index.tsx) to specify your React root component, and where the React root component will be rendered.
