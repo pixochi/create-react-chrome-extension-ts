@@ -29,7 +29,7 @@ setupProject({
 
 ### Manifest files
 
-The boilerplate contains 2 manifest files - an extension manifest for Google Chrome and a web app manifest if you want to make a PWA build.
+The boilerplate contains 2 manifest files: an extension manifest for Google Chrome and a web app manifest if you want to make a PWA build.
 
 `extension manifest` - [extension-manifest.json](https://github.com/pixochi/create-react-chrome-extension-ts/blob/main/public/extension-manifest.json)
 
