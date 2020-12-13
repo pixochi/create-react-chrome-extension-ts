@@ -81,5 +81,5 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+You can read more in the Medium article: [How to Build a Chrome Extension with React, TypeScript and Webpack: From creating a boilerplate to publishing a complete extension to Chrome Web Store](https://jakub-kozak.medium.com/how-to-build-a-chrome-extension-with-react-typescript-and-webpack-92e806ce2e16).
 
