@@ -15,7 +15,7 @@ You can change the options used in the `setupProject` function in  [src/index.ts
 `injectWebAppTo` - a CSS selector for an element to which the web app will be rendered if the app runs in development mode with `yarn start` or is built as a standard web app with `yarn build:web-app`
 
 **Default options:**
-```
+```javascript
 setupProject({
   rootElement: (
     <React.StrictMode>
@@ -25,7 +25,6 @@ setupProject({
   injectExtensionTo: "body",
   injectWebAppTo: "#root",
 });
-
 ```
 
 ### Manifest files
