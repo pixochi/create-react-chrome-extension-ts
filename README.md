@@ -1,6 +1,6 @@
 # Create React Chrome Extension - TS
 
-A lightweight boilerplate for building a **Chrome extension** and a standard **React web app** with React, TypeScript and Webpack **at the same time**.
+A lightweight boilerplate for building a **Chrome extension** and a standard **web app** with React, TypeScript and Webpack **at the same time**.
 
 ## How to use the boilerplate
 
