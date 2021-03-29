@@ -67,9 +67,16 @@ module.exports = {
       // https://symfonycasts.com/screencast/webpack-encore/single-runtime-chunk
       config.optimization.runtimeChunk = false;
 
-      // The name of the extension bundle must not include `[contenthash]`,
-      // so it can be referenced in `manifest.json` as `content_script`.
-      config.output.filename = "main.js";
+      config.entry = {
+        // web extension
+        main: "./src/index.tsx",
+        // background script that has to be referenced in the extension manifest
+        background: "./src/background/index.ts",
+      };
+
+      // Filenames of bundles must not include `[contenthash]`, so that they can be referenced in `extension-manifest.json`.
+      // The `[name]` is taken from `config.entry` properties, so if we have `main` and `background` as properties, we get 2 output files - main.js and background.js.
+      config.output.filename = "[name].js";
 
       // `MiniCssExtractPlugin` is used by the default CRA webpack configuration for
       // extracting CSS into separate files. The plugin has to be removed because it
