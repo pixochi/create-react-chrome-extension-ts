@@ -41,6 +41,10 @@ The boilerplate contains 2 manifest files: an extension manifest for Google Chro
 
 The `build` folder will contain either of them depending on which build script you run - `yarn build:extension` or `yarn build:web-app`
 
+### Background scripts
+
+If your Chrome extension needs to use background scripts, add them to `src/background/index.ts`.
+
 ## Available Scripts
 
 In the project directory, you can run:
